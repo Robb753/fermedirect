@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 connectToServer()
   .then(() => {
     // Define a route to get all users
-    app.get("/GetUsers", async (req, res) => {
+    app.get("/", async (req, res) => {
       try {
         const users = await UserModel.find();
         console.log("Fetched users:", users); // Log the fetched users
