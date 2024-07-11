@@ -11,7 +11,7 @@ const MapComponent = () => {
   const markersRef = useRef([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/GetUsers")
+    fetch("${process.env.REACT_APP_API_URL}/GetUsers")
       .then((response) => response.json())
       .then((data) => {
         console.log("Fetched users:", data);
