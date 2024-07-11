@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import axios from "axios";
 
+
 const MapComponent = () => {
   const [users, setUsers] = useState([]);
   const [map, setMap] = useState(null);
@@ -11,7 +12,8 @@ const MapComponent = () => {
   const markersRef = useRef([]);
 
   useEffect(() => {
-    fetch("${process.env.REACT_APP_API_URL}/GetUsers")
+    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:3000";
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         console.log("Fetched users:", data);
