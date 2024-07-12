@@ -12,9 +12,13 @@ const MapComponent = () => {
   const markersRef = useRef([]);
 
   useEffect(() => {
-    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:3000";
-    fetch(apiUrl)
-      .then((response) => response.json())
+    const apiUrl = process.env.REACT_APP_API_URL,
+    fetch(apiUrl).then((response) => {
+      if (!response.ok) {
+        throw new Error('HTTP error! Status: ${response.status}');
+      }
+      return response.json();
+    })
       .then((data) => {
         console.log("Fetched users:", data);
         setUsers(data);
