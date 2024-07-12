@@ -27,7 +27,7 @@ const MapComponent = () => {
 
   useEffect(() => {
     const loader = new Loader({
-      apiKey: "AIzaSyDjriQ5S2ywrpaEME1xrD_cHdlAC1iPX9I",
+      apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
       version: "weekly",
       libraries: ["marker"],
     });
@@ -90,7 +90,7 @@ const MapComponent = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     const query = e.target.elements.query.value;
-    const apiKey = "bf6cf043640c4024a00bae8133ccfe39"; // Remplacez par votre clé API Geoapify
+    const apiKey = process.env.REACT_APP_GEOAPIFY_API_KEY; // Remplacez par votre clé API Geoapify
 
     if (query) {
       try {
