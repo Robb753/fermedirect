@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
 import axios from "axios";
-
+require("dotenv").config();
 
 const MapComponent = () => {
   const [users, setUsers] = useState([]);
@@ -12,7 +12,7 @@ const MapComponent = () => {
   const markersRef = useRef([]);
 
   useEffect(() => {
-    const apiUrl = ("${process.env.REACT_APP_API_URL}/GetUsers");
+    const apiUrl = ("${process.env.REACT_APP_API_URL}");
     fetch(apiUrl).then((response) => {
       if (!response.ok) {
         throw new Error('HTTP error! Status: ${response.status}');
